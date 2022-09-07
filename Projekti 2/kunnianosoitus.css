@@ -1,0 +1,18 @@
+body{
+
+  font-family: 'Berkshire Swash', cursive;
+  color: white;
+background-color: black;
+}
+#otsikko{
+text-align: center;
+}
+#kiitosteksti{
+  float: right;
+  width: 51%;
+}
+#veskukuva{
+  float:left;
+  width: 49%;
+  padding: 10px;
+}
