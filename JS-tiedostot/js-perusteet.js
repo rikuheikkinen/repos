@@ -28,3 +28,7 @@ function atribuutti(nimi) {
   var t2 = "hyvä opettaja"
   console.log(nimi + t1 + t2);
 }
+function laskeYhteen(luku1, luku2) {
+  console.log(luku1 + luku2);
+
+}
