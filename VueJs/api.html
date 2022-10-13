@@ -1,0 +1,112 @@
+<html>
+<head>
+
+<script src="https://unpkg.com/vue@2.4.3/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<style type="text/css">
+       body{
+       color: black;
+       font-family: cursive;
+
+
+          }
+
+
+
+      input
+      {
+        font-size: 24px;
+
+      }
+
+      #app{
+        display: block;
+        text-align: center;
+        background-color: #4267B2;
+        margin:auto;
+        width: 50%;
+        height: 80% ;
+        border-radius: 15px;
+      }
+p{
+
+  font-size: 24px;
+}
+
+
+
+
+
+
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+      <div id="app">
+       <h1>Find food images by ingredients</h1>
+        <p>Write an ingredient:</p>
+        <input type="text" v-model="ainekset" name="ainekset" />
+        <input type="submit" value="Get image" name="change" @click="findIngredients()"  />
+
+          <img :src="answer" alt="">
+
+          <h1 id="answerBox"> {{answer}} </h1>
+
+
+      </div>
+      <script language="javascript">
+
+        var vueObject = new Vue({
+                   el: '#app',
+                   data: {
+                      answer: "",
+                      id:"",
+                      ainekset: "",
+                   },
+                   methods: {
+                     findIngredients: function ()
+                     {
+                    let url1 = ("https://api.spoonacular.com/recipes/findByIngredients?apiKey=b90c0f24f6d6426db4453c0f842de6e5&ingredients=" + this.ainekset + "&number=10")
+
+
+                    axios.get (url1)
+
+                        .then((response) => {
+                          let filter = response.data;
+
+                            this.answer = filter ;
+
+
+
+
+
+
+
+
+
+
+                          });
+                     }
+
+                   },
+                   mounted: function () {
+                    this.findIngredients();
+                   },
+
+
+                 })
+             </script>
+
+
+
+
+</body>
+</html>

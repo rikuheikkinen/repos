@@ -1,0 +1,43 @@
+<html>
+<head>
+<link rel="stylesheet" href="vuejs.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script></head>
+<body>
+<div class="wrapper">
+<h1 id="PaulusBox">Näin monta sekuntia olet NAUTTINUT elämästäsi täällä: {{secs}} !!
+  <br />
+  {{todoItems[0]}}
+  <br />
+  {{todoItems[1]}}
+  <br />
+  {{todoItems[2]}}
+</h1>
+<script language="javascript">
+var killenVueKomponentti = new Vue({
+  el: '#PaulusBox',
+  data: {
+    todoItems:
+    [
+      "Vie roskat",
+      "Laita asiat",
+      "Pelaa tiesikkaa",
+    ],
+    secs:0,
+  },
+  methods:
+  {
+    updateSecs: function()
+    {
+      this.secs += 1;
+    }
+  },
+  mounted: function ()
+  {
+    setInterval(this.updateSecs, 1000);
+  },
+});
+
+</script>
+</div>
+</body>
+</html>

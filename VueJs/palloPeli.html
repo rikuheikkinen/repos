@@ -1,0 +1,86 @@
+<html>
+<head>
+
+<script src="Paulus_Nyysii.js"></script>
+<style type="text/css">
+      #myDiv{
+        position: absolute;
+        top: 100px;
+        left: 200px;
+        background-color:blue;
+        height:80px;
+        width: 80px;
+        border-radius: 100px;
+      }
+</style>
+<style type="text/css">
+      #myDiv2{
+        position: absolute;
+        top: 100px;
+        left: 500px;
+        background-color:red;
+        height:80px;
+        width: 80px;
+        border-radius: 10px;
+      }
+</style>
+
+
+
+</head>
+
+<body>
+
+      <div id="example">
+        <button v-on:click="changeWidth()">vaihda</button>
+        <button v-on:click="addForce()">PAMAUTA</button>
+        <div id="myDiv" v-bind:style="{ top: computedTop }"></div>
+        <div id="myDiv2" v-bind:style="{ top: computedTop }"></div>
+      </div>
+
+      <script language="javascript">
+
+        var vm = new Vue({
+            el: '#example',
+            data: {
+               width:'200px',
+               widthInteger: 200,
+
+               top: 100,
+               left: 200,
+               xAdd: 10,
+               yAdd: 1,
+
+               timer:null,
+            },
+            computed: {
+              computedTop: function() {
+                return this.top;
+              }
+            },
+            methods: {
+              addForce: function (event)
+              {
+                this.yAdd -= 5;
+                /*
+                this.widthInteger += 100;
+                this.width = this.widthInteger + "px";
+                */
+              },
+              updateBall: function (event)
+              {
+                  this.yAdd +=0.1;
+                  this.top += this.yAdd;
+              },
+            },
+
+            mounted: function () {
+            this.timer = setInterval(() => {
+                this.updateBall();
+            }, 20)
+            },
+
+          })
+    </script>
+</body>
+</html>

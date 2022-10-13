@@ -1,0 +1,106 @@
+<html>
+<head>
+
+<script src="https://unpkg.com/vue@2.4.3/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<style type="text/css">
+       body{
+       color: black;
+       font-family: monospace;
+
+
+          }
+
+
+
+      input
+      {
+        font-size: 24px;
+
+      }
+
+      #app{
+        display: block;
+        text-align: center;
+        background-color: #4267B2;
+        margin:auto;
+        width: 90%;
+        height: 50% ;
+        border-radius: 15px;
+      }
+
+      h1{
+        font-size: 40px;
+
+      }
+      p{
+
+        font-size: 24px;
+      }
+
+
+
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+      <div id="app">
+       <h1>Bored?</h1>
+
+
+        <input type="submit" value="Get random activity!" name="change" @click="findActivity()"  />
+
+
+
+          <p id="answerBox"> {{answer}} </p>
+
+
+      </div>
+      <script language="javascript">
+
+        var vueObject = new Vue({
+                   el: '#app',
+                   data: {
+                      answer: "",
+
+
+                   },
+                   methods: {
+                     findActivity: function ()
+                     {
+                    let url1 = ("http://www.boredapi.com/api/activity/")
+
+
+                    axios.get (url1)
+
+                        .then((response) => {
+                            let filter = response.data.activity;
+
+                            this.answer = filter ;
+
+
+                          });
+                     }
+
+                   },
+                   mounted: function () {
+                    this.findActivity();
+                   },
+
+
+                 })
+             </script>
+
+
+
+
+</body>
+</html>

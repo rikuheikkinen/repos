@@ -1,0 +1,127 @@
+<html>
+<head>
+
+<script src="https://unpkg.com/vue@2.4.3/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<style type="text/css">
+       body{
+       color: black;
+       font-family: cursive;
+
+
+          }
+
+
+
+      input
+      {
+        font-size: 24px;
+
+      }
+
+      #apiAnswerContainer{
+        display: block;
+        text-align: center;
+        background-color: #fdb000;
+        margin:auto;
+        width: 50%;
+        height: 15% ;
+      border-top-right-radius: 15px;
+      border-top-left-radius:15px;
+      }
+
+      #answerBox{
+        display: block;
+        text-align: center;
+        background-color: beige;
+        height: auto;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+
+      }
+      #footerDown{
+        display: block;
+        padding: 2%;
+        background-color: green;
+        height: 45%;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+
+      }
+
+
+
+
+      }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+      <div id="apiAnswerContainer">
+       <h1>Find recipes by ingredients</h1>
+        <input type="text" v-model="ainekset" name="ainekset" />
+        <input type="submit" value="Etsi" name="change" @click="findIngredients()"  />
+
+
+
+          <h1 id="answerBox"> {{answer}} </h1>
+
+           <article id="footerDown">
+             <footer><i>Tämän sivun on luonut:<br> Riku Heikkinen, 2022</ br><i></footer>
+           </article>
+
+      </div>
+      <script language="javascript">
+
+        var vueObject = new Vue({
+                   el: '#apiAnswerContainer',
+                   data: {
+                      answer: "",
+                      id: "",
+                      ainekset: "",
+                   },
+                   methods: {
+                     findIngredients: function ()
+                     {
+                    let url1 = ("https://api.spoonacular.com/recipes/findByIngredients?apiKey=3995a3f4c0af49609aa1e05e53313ae3&ingredients=" + this.ainekset + "&number=1")
+                    let url2 = ("https://api.spoonacular.com/recipes/${id}?apiKey=3995a3f4c0af49609aa1e05e53313ae3&information")
+
+                      //url1 axios haku etsii reseptin ID:n ja syöttää arvon id objektille data arrayssä
+                        axios.get (url1)
+                          .then((response) => {
+                              this.id = response.data[0].id;
+                            
+
+                             })
+
+                      //url2 axios haku etsii reseptin saadun ID:n perusteella ja syöttää arvon "answer" objektille,
+                      // joka on kutsuttu html osiossa :78 ,<h1 id="answerBox"> {{ answer }} </h1>
+                         axios.get (url2)
+                           .then ((response) => {
+                             this.answer = response.data ;
+
+
+                           })
+                          }
+                         },
+                   mounted: function () {
+                    this.findIngredients();
+                   },
+
+
+                 })
+             </script>
+
+
+
+
+</body>
+</html>
