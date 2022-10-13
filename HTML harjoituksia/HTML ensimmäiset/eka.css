@@ -1,0 +1,13 @@
+.liha
+{font-weight: bolder;color: teal;}
+body
+{margin:50px;}
+table, th,td
+{border: 1px solid black;}
+body
+{background-color: green}
+img
+{
+  clear: both;
+  float: right;
+}
