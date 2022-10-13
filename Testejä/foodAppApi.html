@@ -1,0 +1,113 @@
+<html>
+<head>
+
+<script src="https://unpkg.com/vue@2.4.3/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<style type="text/css">
+       body{
+       color: black;
+       font-family: cursive;
+
+
+          }
+
+
+
+      input
+      {
+        font-size: 24px;
+
+      }
+
+      #apiAnswerContainer{
+        display: block;
+        text-align: center;
+        background-color: #fdb000;
+        margin:auto;
+        width: 50%;
+        height: 15% ;
+      border-top-right-radius: 15px;
+      border-top-left-radius:15px;
+      }
+
+
+
+
+
+      }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+      <div id="apiAnswerContainer">
+       <h1>Find recipes by ingredients</h1>
+      <input type="text" v-model="ainekset" name="ainekset" />
+        <input type="submit" value="Etsi" name="change" @click="findIngredients()"  />
+
+
+
+          <h1 id="answerBox"> {{answer}} </h1>
+
+
+
+      </div>
+      <script language="javascript">
+
+        var vueObject = new Vue({
+                   el: '#apiAnswerContainer',
+                   data: {
+                      answer: "",
+                      ainekset: "",
+                      id: "",
+                   },
+                   methods: {
+                     findIngredients: function ()
+                     {
+                    let url1 = ("https://api.spoonacular.com/recipes/findByIngredients?apiKey=b90c0f24f6d6426db4453c0f842de6e5&ingredients=" + this.ainekset + "&number=1")
+
+
+
+                      //url1 axios haku etsii reseptin ID:n ja syöttää arvon id objektille data arrayssä
+                        axios.get (url1)
+
+
+
+                          .then((response) => {
+                            this.id = response.data[0].id;
+
+                          }),
+
+                    //  url2 axios haku etsii reseptin saadun ID:n perusteella ja syöttää arvon "answer" objektille,
+                      // joka on kutsuttu html osiossa :78 ,<h1 id="answerBox"> {{ answer }} </h1>
+                    let url2 = ("https://api.spoonacular.com/recipes/${id}?apiKey=b90c0f24f6d6426db4453c0f842de6e5&information")
+
+                            axios.get (url2)
+                            .then ((response) => {
+
+                             this.answer = response.data[0] ;
+
+
+                           })
+                          }
+                         },
+                   mounted: function () {
+                    this.findIngredients();
+                   },
+
+
+                 })
+             </script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<html>
+<head>
+
+<script src="https://unpkg.com/vue@2.4.3/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<style type="text/css">
+      #myDiv{
+        position: absolute;
+        top: 100px;
+        left: 200px;
+        background-color:red;
+        height:100px;
+        width: 100px;
+        border-radius: 100px;
+      }
+
+      input
+      {
+        font-size: 24px;
+      }
+</style>
+
+
+
+
+</head>
+
+<body>
+      <div id="apiAnswerContainer">
+        <input type="text" v-model="humanName" name="humanName" />
+        <input type="submit" value="vaihda" name="change" @click="setAge()" />
+        <div id="answer">
+          <h1>{{answer}}</h1>
+        </div>
+      </div>
+      <script language="javascript">
+
+        var vueObject = new Vue({
+                   el: '#apiAnswerContainer',
+                   data: {
+                      answer: "jepulis",
+                      humanName: "pertti"
+                   },
+                   methods: {
+                     setAge: function ()
+                     {
+                      axios.get("https://api.agify.io/?name=" + this.humanName)
+                        .then((response) => {
+                            this.answer = response.data.age;
+                        });
+                     }
+
+                   },
+                   mounted: function () {
+                    this.setAge();
+                   },
+
+
+                 })
+             </script>
+
+
+
+      <div id="example">
+        <button v-on:click="changeWidth()">vaihda</button>
+        <button v-on:click="addForce()">PAMAUTA</button>
+        <div id="myDiv" v-bind:style="{ top: computedTop }"></div>
+      </div>
+
+      <script language="javascript">
+
+        var vm = new Vue({
+            el: '#example',
+            data: {
+               width:'200px',
+               widthInteger: 200,
+
+               top: 100,
+               left: 200,
+               xAdd: 10,
+               yAdd: 1,
+
+               timer:null,
+            },
+            computed: {
+              computedTop: function() {
+                return this.top;
+              }
+            },
+            methods: {
+              addForce: function (event)
+              {
+                this.yAdd -= 10;
+                /*
+                this.widthInteger += 10;
+                this.width = this.widthInteger + "px";
+                */
+              },
+              updateBall: function (event)
+              {
+                  this.yAdd +=0.1;
+                  this.top += this.yAdd;
+
+                  if(this.top > 700)
+                    this.yAdd = -this.yAdd;
+              },
+            },
+
+            mounted: function () {
+            this.timer = setInterval(() => {
+                this.updateBall();
+            }, 20)
+            },
+
+          })
+    </script>
+</body>
+</html>

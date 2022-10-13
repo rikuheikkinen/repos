@@ -1,0 +1,43 @@
+.vieri{
+
+  display: inline-grid;
+  margin: 5px;
+  background-color: grey;
+  width: 320px;
+  height:200px;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: monospace;
+border-style: solid;
+
+}
+
+
+
+button{
+  font-family: monospace;
+  background-color: #5e91ba;
+  color: black;
+
+}
+h1{
+  text-align: center;
+}
+
+#heijaaBtn{
+  width: 80px;
+  height: 80px;
+
+border-radius: 100px;
+}
+
+
+#korotettavaLuku{
+display: block;
+
+}
+
+#potenssiLuku{
+
+display: block;
+}

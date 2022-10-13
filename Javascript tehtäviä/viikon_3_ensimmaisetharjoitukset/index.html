@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js">
+
+    </script>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <article class="vieri" id="yksi">
+    <h1>Tehtävä 1</h1>
+   <form class="" action="index.html" method="post">
+  <p>Anna parillinen luku:<input type="text" id="pRillinen"name="prillinen" value=""></p>
+  <button type="button" name="button" onclick="tulostaParilliset()">Tulosta parilliset</button>
+  <div id="parilliset"></div>
+  </form>
+      </article>
+
+      <article class="vieri" id="kaksi">
+
+        <h1>Tehtävä 2</h1>
+
+        <form class="" action="index.html" method="post">
+      <p>Anna sana: <input type="text" id="sSana" value=""></p>
+      <button type="button" name="button" onclick="muutaSalasanaksi()">Muuta salasanaksi</button>
+            <div id="salasana"></div>
+    </form>
+
+      </article>
+<article class="vieri" id="kolme">
+
+        <h1>Tehtävä 3</h1>
+        <form class="" action="index.html" method="post">
+          <p>Anna sana: <input type="text" id="syote" value""></p>
+          <button type="button" name="button" onClick="tarkistaKirjain()">Onko Ö/ö-kirjainta</button>
+          <div id="vastaus"></div>
+
+
+
+        </form>
+
+</article>
+
+      <article class="vieri" id="nelja">
+
+            <h1>Tehtävä 4</h1>
+            <form class="" action="index.html" method="post">
+              <p>Anna luku, josta lasketaan kertoma: <input type="text" id="syoteNum" value""></p>
+              <button type="button" name="button" onClick="laskeKertoma()">Laske kertoma</button>
+              <div id="vastaus2"></div>
+
+
+            </form>
+
+      </article>
+
+      <article class="vieri" id="viisi">
+
+            <h1>Tehtävä 5</h1>
+              <!-- hipHeijaa() funktio tulostaa numerot 1-100, kuitenkin eritellen ehtolauseilla luvut jotka ovat
+                  3:lla jaollisia sekä 5:llä jaollisia. jos 3 -> tulostetaan hip. jos 5 -> tulostetaan heijaa.
+                jos molemmilla -> tulostetaan hipheijaa-->
+
+            <form class="" action="index.html" method="post">
+
+          <button id="heijaaBtn"type="button" name="button" onClick="hipHeijaa()">Tulosta</button>
+              <div id="vastaus3"></div>
+
+
+            </form>
+
+      </article>
+
+      <article class="vieri" id="kuusi">
+
+            <h1>Tehtävä 6</h1>
+
+            <!-- tulostaEkat(), perus for looppi joka tulostaa numerot 1-10 -->
+            <form class="" action="index.html" method="post">
+
+          <button id="tulosta10"type="button" name="button" onClick="tulostaEkat()">Tulosta</button>
+              <div id="vastaus4"></div>
+
+
+            </form>
+
+      </article>
+
+      <article class="vieri" id="seitseman">
+
+            <h1>Tehtävä 7</h1>
+            <!-- laskeEkat() laskee yhteen numerot 1-10 -->
+            <form class="" action="index.html" method="post">
+
+          <button id="laskeYhteenEkat"type="button" name="button" onClick="laskeEkat()">Tulosta</button>
+              <div id="vastaus5"></div>
+
+
+            </form>
+
+      </article>
+
+      <article class="vieri" id="kahdeksan">
+
+            <h1>Tehtävä 8</h1>
+            <form class="" action="index.html" method="post">
+
+              <p>Anna korotettava <br>luku </ br>: <input type="text" id="korotettavaLuku" value""></p>
+                <p>Anna potenssi: <input type="text" id="potenssiLuku" value""></p>
+
+
+              <button type="button" name="button" onClick="laskePotenssi()">Laske</button>
+              <div id="vastaus6"></div>
+
+
+            </form>
+
+      </article>
+      <article class="vieri" id="yhdeksan">
+
+            <h1>Tehtävä 9</h1>
+            <form class="" action="index.html" method="post">
+
+                <p><input type="text" id='luku1' value""></p>
+                <p><input type="text" id='luku2' value""></p>
+                <p><input type="text" id='luku3' value""></p>
+                <p><input type="text" id='luku4' value""></p>
+                <p><input type="text" id='luku5' value""></p>
+              <button type="button" name="button" onClick="etsiSuurinJaPienin()">Etsi suurin ja pienin</button>
+              <div id="vastaus7"></div>
+
+
+            </form>
+
+      </article>
+
+      <article  class='vieri' id='kyba'>
+<h1>Tehtävä 10</h1>
+  <p>Anna muokattava salasana:  <input type="text" id="salis" value="">
+<button type="button" id="button" onclick="muokkaaSalasana()">Muunna salasanaksi</button>
+<div id="lukujenTulostusS"></div>
+</article>
+          <article  class='vieri' id='ykst'>
+              <h1>Tehtävä 11</h1>
+
+                <p>Anna pienempi numero:<input type="text" id="pienempiNro" value=""></p>
+                <p>Anna isompi numero:  <input type="text" id="isompiNro" value=""></p>
+              <button type="button" id="button" onclick="prillisetPrittomat()">näytä parilliset ja parittomat erikseen sekä niiden summa</button>
+              <div id="vastaus8"></div>
+              </article>
+  </body>
+</html>
