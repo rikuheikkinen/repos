@@ -1,0 +1,51 @@
+body
+{
+  width: 800px;
+  margin: auto;
+  font-family: marker felt;
+  color: black;
+
+  ;
+
+}
+header, footer
+{
+  background-color: #1B9A9A;
+  padding: 5px 0px 10px 10px;
+}
+
+header > h1, h2, h3
+{
+  color: black;
+
+}
+
+nav
+{
+  width: 225px ;
+  margin: auto;
+  background-color: #008b8b;
+}
+
+main
+{
+
+}
+aside
+{
+  padding: 10px;
+  height: 385px;
+  width: 200px;
+  float: right;
+  background-color: #005757;
+}
+
+section
+{
+background-color: #006F6F;
+width: 617px;
+}
+aside, section
+{
+  padding: 5px 0px 10px 10px;
+}

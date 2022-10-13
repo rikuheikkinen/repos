@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="lomaketehtävä.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+
+
+    <form class="" action="index.html" method="post">
+
+    <h1>Lomake</h1>
+<!-- etunimi, sukunimi, käyttäjätunnus,salasana -->
+<table>
+<tr>
+  <td> <label for="etunimi">Etunimi</label></td>
+  <td> <input type="text" id="enimi" name="etunimi" value=""></td>
+</tr>
+<tr>
+  <td> <label for="sukunimi">Sukunimi</label></td>
+  <td>  <input type="text" id="snimi" name="sukunimi" value=""></td>
+  </tr>
+ <tr>
+   <td><label for="käyttäjätunnus">Käyttäjätunnus</label> </td>
+   <td><input type="text" id="käyttäjä" name="käyttäjätunnus" value=""></td>
+ </tr>
+ <tr>
+   <td><label for="salasana">Salasana</label></td>
+   <td><input type="password" id="salasana" name="salasana" value=""></td>
+ </tr>
+<!-- Monivalinta, mies/nainen -->
+<tr>
+  <td><label for="sukupuoli">Sukupuoli</label></td>
+  <td><input type="radio" id="genderm" name="sukupuoli" value="mies">
+  <label for="genderm">Mies</label><br>
+  <input type="radio" id="gendern" name="sukupuoli" value="nainen">
+   <label for="gendern">Nainen</label></td>
+
+</tr>
+
+<!-- Palaute -->
+<tr>
+<td><label for="palaute">Palaute</label></td>
+  <td><textarea name="palaute" rows="5" cols="15"></textarea></td>
+ </tr>
+<!-- alasvetovalikko -->
+<tr>
+  <td><label for="jäsenyystaso">Jäsenyystaso</label></td>
+  <td> <select class="jäsenyystaso" name="jäsenyystaso">
+    <option value="">Valitse yksi</option>
+     <option value="taso1">Aloittelija</option>
+      <option value="taso2">Harrastaja</option>
+       <option value="taso3">Ammattilainen</option>
+     </select> </td>
+</tr>
+
+     <!-- Osaamisalueet monivalinta -->
+<tr>
+  <td><label for="osaamisalueet">Valitse osaamisalueet</label><br></td>
+  <td>
+  <input type="checkbox" id="osaamisalueet1"name="osaamisalueet1" value="PHP">
+   <label for="osaamisalueet1">PHP</label><br>
+    <input type="checkbox" id="osaamisalueet2" name="osaamisalueet2" value="HTML">
+     <label for="osaamisalueet2">HTML</label><br>
+      <input type="checkbox" id="osaamisalueet3" name="osaamisalueet3" value="CSS">
+         <label for="osaamisalueet3">CSS</label></td>
+       </tr>
+
+           <!-- Painikkeet -->
+           <tr>
+             <td><button type="submit" id="lähetä"name="lähetä">Lähetä</button></td>
+             <td><button type="clear" id="tyhjennä"name="tyhjennä">Tyhjennä</button></td>
+           </tr>
+
+
+</table>
+  </form>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+body
+{
+  color: #ffffff;
+  font-style: oblique;
+  background-color: black;
+}
+section
+{
+
+
+}
+img
+    {
+       clear: both;
+      Float:right;
+    margin-right: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  body
+.Fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right:0;
+  bottom: 0;
+  left:0;
+  overflow: hidden;
+  z-index:-100;
+}
+.Fullscreen-bg_video{
+position: fixed;
+top: 0;
+left: 0;
+min-width: 100%;
+min-height: 100%;
+
+
+
+}
