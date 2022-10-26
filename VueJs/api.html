@@ -3,10 +3,15 @@
 
 <script src="https://unpkg.com/vue@2.4.3/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
 <style type="text/css">
+
+
        body{
        color: black;
-       font-family: cursive;
+  font-family: 'Berkshire Swash', cursive;
 
 
           }
@@ -22,19 +27,31 @@
       #app{
         display: block;
         text-align: center;
-        background-color: #4267B2;
-        margin:auto;
+        background-color: #73B55B;
+        margin: auto;
         width: 50%;
         height: 80% ;
         border-radius: 15px;
+        border-style: solid;
       }
 p{
 
   font-size: 24px;
 }
 
+#photo{
 
+padding-top: 20px;
+border-radius: 40px;
 
+}
+#btn{
+  border-radius: 15px;
+}
+
+input{
+  border-radius: 15px;
+}
 
 
 
@@ -54,9 +71,9 @@ p{
        <h1>Find food images by ingredients</h1>
         <p>Write an ingredient:</p>
         <input type="text" v-model="ainekset" name="ainekset" />
-        <input type="submit" value="Get image" name="change" @click="findIngredients()"  />
+        <input id="btn" type="submit" value="Get image" name="change" @click="findIngredients()"  />
 
-          <img :src="answer" alt="">
+          <img id="photo" :src="answer" alt="">
 
           <h1 id="answerBox"> {{answer}} </h1>
 
@@ -74,16 +91,14 @@ p{
                    methods: {
                      findIngredients: function ()
                      {
-                    let url1 = ("https://api.spoonacular.com/recipes/findByIngredients?apiKey=b90c0f24f6d6426db4453c0f842de6e5&ingredients=" + this.ainekset + "&number=10"),
-                    headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
+                    let url1 = ("https://api.spoonacular.com/recipes/findByIngredients?apiKey=b90c0f24f6d6426db4453c0f842de6e5&ingredients=" + this.ainekset + "&number=10")
+
 
                     axios.get (url1)
 
                         .then((response) => {
-                          let filter = response.data;
-
+                          let filter = response.data[0].image;
+                          console.log(filter);
                             this.answer = filter ;
 
 

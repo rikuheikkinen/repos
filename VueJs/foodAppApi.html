@@ -92,13 +92,13 @@
                      findIngredients: function ()
                      {
                     let url1 = ("https://api.spoonacular.com/recipes/findByIngredients?apiKey=3995a3f4c0af49609aa1e05e53313ae3&ingredients=" + this.ainekset + "&number=1")
-                    let url2 = ("https://api.spoonacular.com/recipes/${id}?apiKey=3995a3f4c0af49609aa1e05e53313ae3&information")
+                    let url2 = ("https://api.spoonacular.com/recipes/{{id}}?apiKey=3c0c3fff1a2a4e51be7bf6f5d916e606&information")
 
                       //url1 axios haku etsii reseptin ID:n ja syöttää arvon id objektille data arrayssä
                         axios.get (url1)
                           .then((response) => {
                               this.id = response.data[0].id;
-                            
+                              console.log(this.id);
 
                              })
 

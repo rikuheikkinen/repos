@@ -1,0 +1,221 @@
+<html>
+<head>
+        <!-- VUE -->
+<script src="https://unpkg.com/vue@2.4.3/dist/vue.js"></script>
+        <!-- AXIOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+        <!-- Google FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+
+<style type="text/css">
+
+body{
+  background-color: #CFCDCE;
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 23spx;
+  background-image: url(https://i0.hippopx.com/photos/463/78/401/tomatoes-vegetables-food-frisch-preview.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+
+}
+input{
+  font-family: 'Rubik Mono One', sans-serif;
+  border-radius: 8px;
+    background-color: #d1c0a8;
+
+}
+h1{
+  background-color: #d1c0a8;
+  border: solid black;
+
+  text-align:center;
+   margin:auto;
+    padding: 10px;
+ }
+ .searchBox{
+background-color: #d1c0a8;
+border-left: solid black;
+border-right: solid black;
+border-bottom: solid black;
+
+ text-align: left;
+  margin-right:80%;
+   padding: 20px;
+   width:20%;
+}
+
+#instructions{
+padding: 20px;
+ width: 20%;
+  text-align: left;
+   margin-right: 80%;
+   font-size: 19px;
+    background-color: #d1c0a8;
+    border-left: solid black;
+    border-right: solid black;
+    word-wrap: break-word;
+
+
+}
+
+#btn:hover{
+  background-color: #BAD59F;
+}
+#btn{
+
+  background-color: #89A862;
+}
+
+#popImg{
+
+}
+
+#details{
+  margin: auto;
+   background-color: #d1c0a8;
+    border: 1px solid black;
+     opacity: 0.95;
+      width: 50%;
+       height: 100%;
+        padding: 20px;
+         border-radius: 5%;
+  }
+  #details h2{
+    text-align: center;
+
+  }
+  footer {
+     position: fixed;
+      bottom: 0;
+       background: #ffffff;
+        padding: 10px;
+         border-radius: 15px;
+  }
+
+hr{
+  border: 1px solid black;
+}
+img{
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  max-width: 250px;
+height: auto;
+  border-radius: 15px;
+}
+#printBtn:hover{
+  background-color: #BAD59F;
+  }
+  #printBtn{
+  border-radius: 15px;
+  background-color: #89A862;
+  font-family: 'Rubik Mono One', sans-serif;
+  }
+}
+
+
+</style>
+</head>
+<body>
+    <div id="app">
+         <h1>Recipe searcher</h1>
+
+
+         <div id="instructions">
+         Find recipes by adding wanted ingredients.
+          If you want to search for vegan, vegetarian or dairy free recipes just add it to search box.
+          </div>
+
+         <div class="searchBox">
+           <input type="text" placeholder="ex.vegan pasta" name="" v-model="input" value=""/>
+           <br />
+           <br />
+           <input id="btn" type="submit" value="Find recipe" name="change" @click="findIngredients(); isVisible = !isVisible "  />
+         </div>
+
+         <div id="info" v-show="isVisible">
+          <div id="details">
+
+          <h2>{{label}}</h2>
+
+          <h4>Cuisine type: <br />
+               {{cuisine}}</h4>
+
+          <h4>Ingredients:</h4>
+           <ul>
+             <li v-for="value in ingredients">
+               {{ value }}
+            </li>
+           </ul>
+
+           <h4>Calories: <br />
+               {{calories}} kcal </h4>
+
+        <img id="popImg":src=imageUrl>
+
+         <h5>Link to recipe's details: <br />
+            <p><a :href="urli">{{urli}}</a></h5></p>
+
+         <button id="printBtn" @click="printWindow()">Print memo!</button>
+  </div>
+   </div>
+         <footer>Made by: Riku Heikkinen, 2022</footer>
+    </div>
+
+      <script language="javascript">
+
+        var vueObject = new Vue({
+                   el: '#app',
+                   data: {
+                      isVisible: false,
+                      label: "",
+                      imageUrl: "",
+                      ingredients: "",
+                      input: "",
+                      calories: "",
+                      urli: "",
+                      cuisine: "",
+
+                   },
+                   methods: {
+                     findIngredients: function ()
+                     {
+                      let url= ("https://api.edamam.com/search?q="
+                      +this.input+"&app_id=ce0c15e1&app_key=0d270ce1e696458718e9004b0fcea6d4&random=true")
+
+
+                       axios.get (url)
+                        .then((response) => {
+                          let filter = response.data.hits[0].recipe;
+                           let myArray = filter;
+
+
+                        console.log(myArray);
+                          this.label = myArray.label;
+                           this.imageUrl = myArray.image;
+                           this.ingredients = myArray.ingredientLines;
+                              this.calories = Math.floor(myArray.calories);
+                               this.urli = myArray.url;
+                                this.cuisine = myArray.cuisineType[0];
+                                });
+                                },
+                          printWindow: function () {
+                                       window.print();
+                                }
+                                },
+                         mounted: function () {
+                          this.findIngredients();
+                                },
+                                })
+             </script>
+
+
+
+
+</body>
+</html>
